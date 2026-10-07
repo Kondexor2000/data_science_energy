@@ -1,0 +1,72 @@
+:root {
+  color-scheme: light;
+  --ink: #183126;
+  --muted: #65746b;
+  --green: #15803d;
+  --line: #e2e9e2;
+  --paper: #f3f7f2;
+  --white: #fff;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--ink); background: var(--paper); }
+a { color: var(--green); }
+.hero { background: #e4f0e4; border-bottom: 1px solid #d7e5d7; }
+.hero-inner, main, footer { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+.hero-inner { padding: 58px 0 48px; }
+.eyebrow { margin: 0 0 9px; color: var(--green); font-size: .72rem; font-weight: 800; letter-spacing: .13em; }
+h1 { margin: 0; font-size: clamp(2.4rem, 6vw, 4.4rem); letter-spacing: -.055em; line-height: 1; }
+.intro { max-width: 620px; margin: 18px 0 12px; color: #385346; font-size: 1.1rem; line-height: 1.55; }
+.source, .chart-caption { color: var(--muted); font-size: .86rem; line-height: 1.55; }
+main { padding: 28px 0 52px; }
+.status { padding: 20px; color: var(--muted); }
+.status.error { color: #a12727; background: #fff0ef; border-radius: 12px; }
+.metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 18px; }
+.metric, .panel { background: var(--white); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 4px 14px #18312608; }
+.metric { display: flex; min-height: 142px; flex-direction: column; justify-content: center; padding: 22px 24px; }
+.metric-label, .metric-note { color: var(--muted); font-size: .88rem; }
+.metric-value { margin: 8px 0 3px; font-size: clamp(1.65rem, 4vw, 2.2rem); letter-spacing: -.04em; }
+.panel { margin-bottom: 18px; padding: 25px; }
+.section-heading { display: flex; align-items: end; justify-content: space-between; gap: 16px; }
+h2 { margin: 0; font-size: 1.35rem; letter-spacing: -.025em; }
+.horizon-control { display: flex; align-items: center; gap: 9px; color: var(--muted); font-size: .85rem; }
+select { padding: 8px 28px 8px 10px; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); background: #fff; font: inherit; }
+.chart { min-height: 260px; margin-top: 20px; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.grid-line { stroke: #e8eee8; stroke-width: 1; }
+.axis-label { fill: #77867c; font-size: 11px; }
+.chart-line { fill: none; stroke: var(--green); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.forecast-line { fill: none; stroke: #e29a27; stroke-width: 3; stroke-dasharray: 7 6; }
+.two-column { display: grid; grid-template-columns: 1.2fr .8fr; gap: 18px; }
+.two-column .panel { min-width: 0; }
+.mix-area { stroke: #fff; stroke-width: 1; }
+.legend { display: flex; flex-wrap: wrap; gap: 10px 18px; margin: 12px 0 0; padding: 0; list-style: none; color: var(--muted); font-size: .8rem; }
+.legend li { display: flex; align-items: center; gap: 7px; }
+.swatch { width: 10px; height: 10px; border-radius: 3px; }
+.validation { padding-top: 28px; }
+.validation h2 { margin-bottom: 22px; }
+.validation p:not(.eyebrow):not(.chart-caption) { margin: 12px 0; color: var(--muted); }
+.validation strong { color: var(--ink); }
+.download { padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; font-size: .84rem; text-decoration: none; }
+.table-scroll { overflow-x: auto; margin-top: 18px; }
+table { width: 100%; border-collapse: collapse; text-align: right; white-space: nowrap; font-size: .88rem; }
+th, td { padding: 11px 12px; border-bottom: 1px solid var(--line); }
+th { color: var(--muted); font-size: .78rem; font-weight: 700; }
+th:first-child, td:first-child { text-align: left; }
+tbody tr:last-child td { border-bottom: 0; }
+.limitations summary { cursor: pointer; font-weight: 700; }
+.limitations p { color: var(--muted); line-height: 1.65; }
+footer { padding: 0 0 28px; color: var(--muted); font-size: .82rem; }
+
+@media (max-width: 720px) {
+  .hero-inner, main, footer { width: min(100% - 28px, 1120px); }
+  .hero-inner { padding: 42px 0 34px; }
+  .metrics { grid-template-columns: 1fr; gap: 10px; }
+  .metric { min-height: 112px; }
+  .two-column { grid-template-columns: 1fr; gap: 0; }
+  .panel { padding: 19px; border-radius: 13px; }
+  .section-heading { align-items: start; }
+  .horizon-control { flex-direction: column; align-items: start; }
+  .chart { min-height: 210px; }
+}

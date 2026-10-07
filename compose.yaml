@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      - energy-data:/data
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+volumes:
+  energy-data:

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Dane o produkcji energii elektrycznej i udziale OZE w Polsce.">
+    <meta name="theme-color" content="#f3f7f2">
+    <title>Zielona Polska — energia i OZE</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">DANE · ENERGIA · POLSKA</p>
+        <h1>Zielona Polska</h1>
+        <p class="intro">Jak zmienia się produkcja energii elektrycznej i udział odnawialnych źródeł energii?</p>
+        <p class="source">Roczne dane OWID · Polska · od 1990 r.</p>
+      </div>
+    </header>
+
+    <main>
+      <p id="status" class="status" role="status">Wczytywanie danych…</p>
+      <section id="dashboard" hidden>
+        <div class="metrics" aria-label="Najnowsze wskaźniki">
+          <article class="metric">
+            <span class="metric-label">Udział OZE</span>
+            <strong id="renewables" class="metric-value">—</strong>
+            <span id="renewables-change" class="metric-note">—</span>
+          </article>
+          <article class="metric">
+            <span class="metric-label">Generacja ogółem</span>
+            <strong id="generation" class="metric-value">—</strong>
+            <span id="generation-year" class="metric-note">—</span>
+          </article>
+          <article class="metric">
+            <span class="metric-label">Intensywność emisji</span>
+            <strong id="intensity" class="metric-value">—</strong>
+            <span class="metric-note">gCO₂e/kWh</span>
+          </article>
+        </div>
+
+        <section class="panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">TREND I SCENARIUSZ</p>
+              <h2>Udział energii z OZE</h2>
+            </div>
+            <label class="horizon-control" for="horizon">Scenariusz
+              <select id="horizon">
+                <option value="1">1 rok</option>
+                <option value="2">2 lata</option>
+                <option value="3" selected>3 lata</option>
+                <option value="4">4 lata</option>
+                <option value="5">5 lat</option>
+              </select>
+            </label>
+          </div>
+          <div id="share-chart" class="chart" role="img" aria-label="Wykres historycznego udziału OZE i scenariusza trendu"></div>
+          <p class="chart-caption">Przerywana linia to prosta ekstrapolacja trendu historycznego, nie prognoza operacyjna ani cel polityki publicznej.</p>
+        </section>
+
+        <div class="two-column">
+          <section class="panel">
+            <p class="eyebrow">PRODUKCJA · TWh</p>
+            <h2>Składniki miksu</h2>
+            <div id="mix-chart" class="chart" role="img" aria-label="Wykres produkcji energii według źródła"></div>
+            <ul class="legend" id="mix-legend"></ul>
+          </section>
+          <section class="panel validation">
+            <p class="eyebrow">SPRAWDZENIE MODELU</p>
+            <h2>Walidacja chronologiczna</h2>
+            <p>MAE trendu: <strong id="model-mae">—</strong> p.p.</p>
+            <p>MAE naiwnego baseline’u: <strong id="baseline-mae">—</strong> p.p.</p>
+            <p class="chart-caption">Porównanie na trzech ostatnich obserwacjach. Wynik nie gwarantuje jakości przyszłego scenariusza.</p>
+          </section>
+        </div>
+
+        <section class="panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">ŹRÓDŁO</p>
+              <h2>Ostatnie dostępne lata</h2>
+            </div>
+            <a class="download" href="./data/poland_energy.json" download>Pobierz dane JSON</a>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Rok</th><th>Generacja (TWh)</th><th>OZE (TWh)</th><th>Udział OZE</th><th>Intensywność (gCO₂e/kWh)</th></tr></thead>
+              <tbody id="data-rows"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <details class="panel limitations">
+          <summary>Interpretacja i ograniczenia</summary>
+          <p>Dane opisują roczną produkcję energii elektrycznej. Nie zawierają cen rachunków, finansowania KPO ani lokalnych pomiarów jakości powietrza. Współwystępowanie wzrostu OZE i spadku intensywności emisji nie dowodzi związku przyczynowego. Udział OZE liczony jest z hydro, wiatru, słońca i innych OZE; brakujące składowe nie są imputowane.</p>
+          <p>Źródło: <a href="https://catalog.ourworldindata.org/energy/owid_energy/">OWID Energy dataset</a>, kompilowany m.in. z danych Ember, Energy Institute i EIA.</p>
+        </details>
+      </section>
+    </main>
+    <footer>Projekt analityczny · Dane aktualizowane przy wdrożeniu · Bez bazy danych</footer>
+  </body>
+</html>

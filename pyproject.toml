@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zielona-polska"
+version = "0.1.0"
+description = "MVP analityki transformacji elektroenergetycznej w Polsce"
+requires-python = ">=3.11"
+dependencies = [
+  "pandas>=2.2,<3",
+  "requests>=2.32,<3",
+  "scikit-learn>=1.5,<2",
+  "streamlit>=1.40,<2",
+  "plotly>=5.24,<7",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3,<9", "ruff>=0.8,<1"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+

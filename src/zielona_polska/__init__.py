@@ -1,0 +1,1 @@
+"""Analityka miksu energetycznego Polski."""
